@@ -1,0 +1,403 @@
+/*
+ * Reading styles (SPEC §11.4): typography and spacing only. Colors always come
+ * from the color theme. Each style sets the --rs-* variables used by
+ * src/render/preview.css and adds a few structural touches.
+ */
+
+/* ===================== GitHub (default) ===================== */
+.markdown-body[data-reading-style='github'] {
+  --rs-font-body: 'Inter Variable', 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --rs-size: 16px;
+  --rs-leading: 1.6;
+  font-feature-settings: 'cv11', 'calt';
+  font-optical-sizing: auto;
+}
+
+/* ===================== Book ===================== */
+.markdown-body[data-reading-style='book'] {
+  --rs-font-body: 'Literata Variable', 'Literata', Georgia, 'Times New Roman', serif;
+  --rs-font-heading: var(--rs-font-body);
+  --rs-size: 19px;
+  --rs-leading: 1.72;
+  --rs-measure: min(var(--reading-width, 65ch), 66ch);
+  --rs-block-gap: 0.9em;
+  --rs-heading-weight: 600;
+  --rs-heading-tracking: -0.005em;
+  --rs-h1: 2.15em;
+  --rs-h2: 1.42em;
+  --rs-h3: 1.14em;
+  --rs-h4: 1em;
+  --rs-h-top: 2.2em;
+  --rs-h-bottom: 0.7em;
+  --rs-h1-rule: 0;
+  --rs-h2-rule: 0;
+  --rs-code-size: 0.8em;
+  --rs-list-indent: 1.6em;
+  --rs-quote-style: italic;
+  font-optical-sizing: auto;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  padding-top: var(--space-16);
+}
+
+.markdown-body[data-reading-style='book'] h1 {
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.4em;
+  padding-bottom: 0;
+}
+
+.markdown-body[data-reading-style='book'] h2 {
+  padding-bottom: 0;
+}
+
+.markdown-body[data-reading-style='book'] h3 {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.markdown-body[data-reading-style='book'] h4,
+.markdown-body[data-reading-style='book'] h5,
+.markdown-body[data-reading-style='book'] h6 {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Book paragraphs: indented continuations instead of gaps. */
+.markdown-body[data-reading-style='book'] p + p {
+  text-indent: 1.4em;
+  margin-top: calc(var(--rs-block-gap) * -1);
+}
+
+.markdown-body[data-reading-style='book'] blockquote {
+  border-left: 0;
+  padding: 0 2em;
+  color: var(--fg-muted);
+}
+
+.markdown-body[data-reading-style='book'] hr {
+  border: 0;
+  height: auto;
+  text-align: center;
+  margin: 2.2em 0;
+}
+
+.markdown-body[data-reading-style='book'] hr::after {
+  content: '⁂';
+  color: var(--fg-subtle);
+  font-size: 1.1em;
+  letter-spacing: 0.4em;
+}
+
+.markdown-body[data-reading-style='book'] table {
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.markdown-body[data-reading-style='book'][data-drop-cap='true'] > h1 + p::first-letter,
+.markdown-body[data-reading-style='book'][data-drop-cap='true']
+  > .md-chunk:first-child
+  > h1
+  + p::first-letter {
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.85;
+  padding: 0.06em 0.08em 0 0;
+  font-weight: 500;
+  color: var(--fg-heading);
+}
+
+/* ===================== Academic ===================== */
+.markdown-body[data-reading-style='academic'] {
+  --rs-font-body: 'Source Serif 4 Variable', 'Source Serif 4', 'Times New Roman', serif;
+  --rs-font-heading: var(--rs-font-body);
+  --rs-size: 17px;
+  --rs-leading: 1.55;
+  --rs-measure: min(var(--reading-width, 70ch), 72ch);
+  --rs-block-gap: 0.8em;
+  --rs-heading-weight: 650;
+  --rs-heading-tracking: 0;
+  --rs-h1: 1.75em;
+  --rs-h2: 1.3em;
+  --rs-h3: 1.1em;
+  --rs-h4: 1em;
+  --rs-h-top: 1.5em;
+  --rs-h-bottom: 0.5em;
+  --rs-h1-rule: 0;
+  --rs-h2-rule: 0;
+  --rs-code-size: 0.84em;
+  --rs-list-indent: 1.8em;
+  font-optical-sizing: auto;
+  /* Ragged right: justified text on screen rivers badly around inline code. */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  counter-reset: bz-h2;
+}
+
+.markdown-body[data-reading-style='academic'] h1 {
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 1.2em;
+}
+
+.markdown-body[data-reading-style='academic']
+  :is(h1, h2, h3, h4, h5, h6, th, td, pre, .markdown-alert-title) {
+  hyphens: manual;
+}
+
+.markdown-body[data-reading-style='academic'] h2 {
+  counter-increment: bz-h2;
+  counter-reset: bz-h3;
+  padding-bottom: 0;
+}
+
+.markdown-body[data-reading-style='academic'] h3 {
+  counter-increment: bz-h3;
+  counter-reset: bz-h4;
+}
+
+.markdown-body[data-reading-style='academic'] h4 {
+  counter-increment: bz-h4;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body[data-reading-style='academic'] h2::before {
+  content: counter(bz-h2) '\2003';
+}
+
+.markdown-body[data-reading-style='academic'] h3::before {
+  content: counter(bz-h2) '.' counter(bz-h3) '\2003';
+}
+
+.markdown-body[data-reading-style='academic'] h4::before {
+  content: counter(bz-h2) '.' counter(bz-h3) '.' counter(bz-h4) '\2003';
+  font-style: normal;
+}
+
+.markdown-body[data-reading-style='academic'] :is(h2, h3, h4)::before {
+  color: var(--fg-subtle);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Chunked (large) documents keep counters across chunks. */
+.markdown-body[data-reading-style='academic'] .md-chunk {
+  counter-reset: none;
+}
+
+/* Booktabs-style tables. */
+.markdown-body[data-reading-style='academic'] .table-wrap {
+  border: 0;
+  border-radius: 0;
+  border-top: 1.5px solid var(--fg-muted);
+  border-bottom: 1.5px solid var(--fg-muted);
+}
+
+.markdown-body[data-reading-style='academic'] th {
+  background: transparent;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--fg-muted);
+}
+
+.markdown-body[data-reading-style='academic'] :is(th, td) + :is(th, td) {
+  border-left: 0;
+}
+
+.markdown-body[data-reading-style='academic'] tbody tr:nth-child(2n) {
+  background: transparent;
+}
+
+.markdown-body[data-reading-style='academic'] td {
+  border-bottom: 0;
+}
+
+/* Prominent footnotes. */
+.markdown-body[data-reading-style='academic'] .footnote-ref a {
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0 0.1em;
+}
+
+.markdown-body[data-reading-style='academic'] .footnotes {
+  font-size: 0.94em;
+  color: var(--fg-base);
+  border-top: 1.5px solid var(--fg-muted);
+  margin-top: 2.5em;
+}
+
+.markdown-body[data-reading-style='academic'] .footnotes::before {
+  content: 'Notes';
+  display: block;
+  font-weight: 650;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  color: var(--fg-heading);
+}
+
+.markdown-body[data-reading-style='academic'] .footnotes li::marker {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ===================== Compact ===================== */
+.markdown-body[data-reading-style='compact'] {
+  --rs-font-body: 'Inter Variable', 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --rs-size: 14px;
+  --rs-leading: 1.45;
+  --rs-measure: max(var(--reading-width, 70ch), 92ch);
+  --rs-block-gap: 0.6em;
+  --rs-h1: 1.55em;
+  --rs-h2: 1.25em;
+  --rs-h3: 1.08em;
+  --rs-h4: 1em;
+  --rs-h5: 0.92em;
+  --rs-h6: 0.86em;
+  --rs-h-top: 1.15em;
+  --rs-h-bottom: 0.35em;
+  --rs-h2-rule: 0;
+  --rs-code-size: 0.86em;
+  --rs-code-leading: 1.45;
+  --rs-list-indent: 1.4em;
+  --rs-list-gap: 0.1em;
+  font-feature-settings: 'cv11', 'tnum';
+  padding-top: var(--space-6);
+}
+
+.markdown-body[data-reading-style='compact'] h1 {
+  padding-bottom: 0.2em;
+}
+
+.markdown-body[data-reading-style='compact'] h2 {
+  padding-bottom: 0;
+}
+
+.markdown-body[data-reading-style='compact'] pre {
+  padding: 0.6em 0.9em;
+}
+
+.markdown-body[data-reading-style='compact'] :is(th, td) {
+  padding: 0.25em 0.6em;
+}
+
+.markdown-body[data-reading-style='compact'] .markdown-alert {
+  padding: 0.5em 0.8em;
+}
+
+/* ===================== Mono ===================== */
+.markdown-body[data-reading-style='mono'] {
+  --rs-font-body: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+  --rs-font-heading: var(--rs-font-body);
+  --rs-font-code: var(--rs-font-body);
+  --rs-size: 14.5px;
+  --rs-leading: 1.65;
+  --rs-measure: min(var(--reading-width, 70ch), 84ch);
+  --rs-block-gap: 1.1em;
+  --rs-heading-weight: 700;
+  --rs-heading-tracking: 0;
+  --rs-h1: 1.2em;
+  --rs-h2: 1.1em;
+  --rs-h3: 1em;
+  --rs-h4: 1em;
+  --rs-h5: 1em;
+  --rs-h6: 1em;
+  --rs-h-top: 1.8em;
+  --rs-h1-rule: 0;
+  --rs-h2-rule: 0;
+  --rs-code-size: 1em;
+  --rs-list-indent: 2ch;
+  font-variant-ligatures: contextual;
+}
+
+.markdown-body[data-reading-style='mono'] :is(h1, h2, h3, h4, h5, h6) {
+  padding-bottom: 0;
+}
+
+.markdown-body[data-reading-style='mono'] :is(h1, h2, h3, h4, h5, h6)::before {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.markdown-body[data-reading-style='mono'] h1::before {
+  content: '# ';
+}
+.markdown-body[data-reading-style='mono'] h2::before {
+  content: '## ';
+}
+.markdown-body[data-reading-style='mono'] h3::before {
+  content: '### ';
+}
+.markdown-body[data-reading-style='mono'] h4::before {
+  content: '#### ';
+}
+.markdown-body[data-reading-style='mono'] h5::before {
+  content: '##### ';
+}
+.markdown-body[data-reading-style='mono'] h6::before {
+  content: '###### ';
+}
+
+.markdown-body[data-reading-style='mono'] .heading-anchor {
+  display: none;
+}
+
+.markdown-body[data-reading-style='mono'] ul > li::marker {
+  content: '- ';
+  color: var(--accent);
+}
+
+.markdown-body[data-reading-style='mono'] .contains-task-list > li::marker {
+  content: none;
+}
+
+.markdown-body[data-reading-style='mono'] blockquote {
+  border-left: 0;
+  padding-left: 2ch;
+  position: relative;
+}
+
+.markdown-body[data-reading-style='mono'] blockquote::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--fg-subtle);
+}
+
+.markdown-body[data-reading-style='mono'] hr {
+  border-top: 1px dashed var(--border-strong);
+}
+
+.markdown-body[data-reading-style='mono'] :not(pre) > code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body[data-reading-style='mono'] :not(pre) > code::before,
+.markdown-body[data-reading-style='mono'] :not(pre) > code::after {
+  content: '`';
+  color: var(--fg-subtle);
+}
+
+.markdown-body[data-reading-style='mono'] strong::before,
+.markdown-body[data-reading-style='mono'] strong::after {
+  content: '**';
+  color: var(--fg-subtle);
+  font-weight: 400;
+}
+
+.markdown-body[data-reading-style='mono'] .table-wrap {
+  border-style: dashed;
+  border-radius: 0;
+}
+
+.markdown-body[data-reading-style='mono'] :is(th, td) {
+  border-bottom-style: dashed;
+}
+
+.markdown-body[data-reading-style='mono'] .code-block,
+.markdown-body[data-reading-style='mono'] .markdown-alert,
+.markdown-body[data-reading-style='mono'] .mermaid-block {
+  border-radius: 0;
+}

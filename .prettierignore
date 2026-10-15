@@ -1,0 +1,14 @@
+dist
+src-tauri/target
+src-tauri/gen
+node_modules
+package-lock.json
+src/themes/builtin
+docs/screenshots
+playwright-report
+test-results
+public/welcome
+SPEC.md
+PROMPT.md
+src/welcome/files
+dist-perf

@@ -1,0 +1,64 @@
+/* Print / PDF (SPEC §13): only the rendered document, full width, no scrolling. */
+@media print {
+  .titlebar,
+  .statusbar,
+  .sidebar,
+  .divider,
+  .side-panels,
+  .findbar,
+  .toasts,
+  .reading-progress,
+  .conflict-banner,
+  .picker-backdrop,
+  .dialog-backdrop,
+  [data-pane='editor'],
+  .code-block__copy,
+  .heading-anchor {
+    display: none !important;
+  }
+
+  html,
+  body,
+  #root,
+  .app,
+  .shell,
+  .shell__body,
+  .shell__content,
+  .workarea,
+  .workarea__first,
+  .workarea__second,
+  .pane,
+  .preview-scroll {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+    flex: none !important;
+    width: auto !important;
+  }
+
+  body {
+    background: var(--bg-base);
+  }
+
+  .markdown-body {
+    max-width: none;
+    padding: 0;
+  }
+
+  .md-chunk {
+    content-visibility: visible;
+  }
+
+  body[data-print-break-h1] .markdown-body h1:not(:first-of-type) {
+    break-before: page;
+  }
+
+  .markdown-body :is(pre, .code-block, table, img, .mermaid-block, .markdown-alert, .math-block) {
+    break-inside: avoid;
+  }
+
+  .markdown-body :is(h1, h2, h3, h4) {
+    break-after: avoid;
+  }
+}

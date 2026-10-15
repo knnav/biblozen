@@ -1,0 +1,179 @@
+/*
+ * Design tokens. Every component uses these — no magic numbers in component CSS.
+ * Color variables (--bg-*, --fg-*, …) are written by the theme engine at runtime;
+ * the values here are the fallback (Catppuccin Mocha-like) until a theme loads.
+ */
+:root {
+  /* Spacing (4px base, with a couple of half steps) */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 2px;
+  --space-1: 4px;
+  --space-1-5: 6px;
+  --space-2: 8px;
+  --space-2-5: 10px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-full: 999px;
+
+  /* UI typography */
+  --font-ui: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:
+    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --text-2xs: 10px;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-base: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+  --text-3xl: 34px;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --tracking-tight: -0.01em;
+  --tracking-wide: 0.04em;
+
+  /* Motion */
+  --dur-instant: 60ms;
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1.2);
+  --ease-exit: cubic-bezier(0.3, 0, 1, 1);
+
+  /* Layering */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 20;
+  --z-titlebar: 30;
+  --z-dropdown: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-tooltip: 500;
+
+  /* Layout metrics */
+  --titlebar-height: 38px;
+  --statusbar-height: 26px;
+  --progress-height: 2px;
+  --tree-min-width: 180px;
+  --tree-max-width: 520px;
+  --tree-default-width: 260px;
+  --pane-min-width: 260px;
+  --divider-hit: 6px;
+  --icon-sm: 14px;
+  --icon-md: 16px;
+  --icon-lg: 20px;
+  --row-height: 26px;
+  --control-height: 28px;
+  --control-height-lg: 36px;
+  --palette-width: 640px;
+  --palette-max-height: 440px;
+  --toast-width: 360px;
+  --focus-ring-width: 2px;
+  --settings-nav-width: 160px;
+  --settings-control-width: 220px;
+  --settings-number-width: 80px;
+  --switch-width: 36px;
+  --switch-height: 20px;
+  --shadow-elevated: 0 12px 40px -8px rgb(0 0 0 / 0.45), 0 2px 6px rgb(0 0 0 / 0.2);
+  --shadow-subtle: 0 1px 2px rgb(0 0 0 / 0.15);
+
+  /* Component sizes (named here so component CSS has no magic numbers) */
+  --empty-card-width: 440px;
+  --empty-keys-width: 240px;
+  --traffic-light-inset: 76px;
+  --titlebar-side-min: 96px;
+  --titlebar-control-width: 46px;
+  --banner-text-min: 200px;
+  --dialog-width: 420px;
+  --dialog-wide-width: 960px;
+  --dialog-wide-height: 720px;
+  --toast-accent-width: 3px;
+  --search-panel-width: 780px;
+  --search-panel-height: 620px;
+  --status-line-height: 26px;
+  --findbar-input-width: 220px;
+  --findbar-count-width: 64px;
+  --panel-width: 260px;
+  --scrollbar-size: 10px;
+  --scrollbar-inset: 3px;
+  --kbd-min-width: 18px;
+  --kbd-line-height: 16px;
+  --settings-width: 860px;
+  --settings-height: 640px;
+  --settings-search-width: 280px;
+  --swatch-dot: 8px;
+  --swatch-pad-y: 5px;
+  --swatch-pad-x: 6px;
+  --sample-size: 36px;
+  --sample-font-size: 18px;
+  --menu-min-width: 220px;
+  --hairline: 1px;
+  --focus-offset: 2px;
+  --backlink-indent: 19px;
+  --dur-pulse: 1.4s;
+
+  /* Fallback colors (overwritten by the theme engine) */
+  color-scheme: dark;
+  --bg-base: #1e1e2e;
+  --bg-sidebar: #181825;
+  --bg-elevated: #252537;
+  --bg-titlebar: #181825;
+  --bg-statusbar: #181825;
+  --bg-selection: #45475a;
+  --bg-hover: #313244;
+  --bg-active: #3a3a52;
+  --bg-codeblock: #181825;
+  --bg-inlinecode: #313244;
+  --bg-callout: #24243a;
+  --fg-base: #cdd6f4;
+  --fg-muted: #a6adc8;
+  --fg-subtle: #6c7086;
+  --fg-heading: #f5e0dc;
+  --fg-link: #89b4fa;
+  --fg-link-unresolved: #f38ba8;
+  --fg-inlinecode: #f5c2e7;
+  --accent: #cba6f7;
+  --accent-fg: #1e1e2e;
+  --border: #313244;
+  --border-strong: #45475a;
+  --focus-ring: #cba6f7;
+  --scrollbar: #45475a;
+  --callout-note: #89b4fa;
+  --callout-tip: #a6e3a1;
+  --callout-important: #cba6f7;
+  --callout-warning: #f9e2af;
+  --callout-caution: #f38ba8;
+  --editor-cursor: #f5e0dc;
+  --editor-line-highlight: #24243a;
+  --editor-gutter-fg: #6c7086;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0.01ms;
+    --dur-fast: 0.01ms;
+    --dur-base: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+}

@@ -1,0 +1,29 @@
+.divider {
+  position: relative;
+  flex: 0 0 var(--space-px);
+  background: var(--border);
+  z-index: var(--z-raised);
+  cursor: col-resize;
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(var(--divider-hit) / -2);
+}
+
+.divider:hover,
+.divider:focus-visible,
+body[data-resizing] .divider:active {
+  background: var(--accent);
+  outline: none;
+}
+
+body[data-resizing] {
+  cursor: col-resize;
+}
+
+body[data-resizing] * {
+  user-select: none !important;
+}

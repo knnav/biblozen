@@ -1,0 +1,69 @@
+.shell {
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-base);
+  transition: background-color var(--dur-base) var(--ease-standard);
+}
+
+.shell__body {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  position: relative;
+}
+
+.sidebar {
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: var(--bg-sidebar);
+  transition:
+    width var(--dur-base) var(--ease-standard),
+    background-color var(--dur-base) var(--ease-standard);
+}
+
+body[data-resizing] .sidebar {
+  transition: none;
+}
+
+.sidebar__inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell__content {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Focus mode: chrome fades away, content stays. */
+.shell[data-focus='true'] .titlebar,
+.shell[data-focus='true'] .statusbar {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  border: 0;
+  pointer-events: none;
+}
+
+.shell[data-focus='true'] .titlebar {
+  /* Keep a thin invisible strip for dragging the window. */
+  height: var(--space-3);
+  pointer-events: auto;
+}
+
+.shell[data-focus='true'] .titlebar > * {
+  visibility: hidden;
+}
+
+.titlebar,
+.statusbar {
+  transition:
+    height var(--dur-base) var(--ease-standard),
+    opacity var(--dur-base) var(--ease-standard);
+}

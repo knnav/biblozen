@@ -1,0 +1,61 @@
+.statusbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--statusbar-height);
+  padding: 0 var(--space-2);
+  background: var(--bg-statusbar);
+  border-top: var(--space-px) solid var(--border);
+  color: var(--fg-subtle);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  transition: background-color var(--dur-base) var(--ease-standard);
+}
+
+.statusbar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 0 0 auto;
+}
+
+.statusbar__item {
+  padding: 0 var(--space-1-5);
+  font-variant-numeric: tabular-nums;
+}
+
+.statusbar__save[data-state='dirty'] {
+  color: var(--accent);
+}
+
+.statusbar__hint {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+.statusbar__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: calc(var(--statusbar-height) - var(--space-1-5));
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg-subtle);
+  font-size: var(--text-xs);
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+
+.statusbar__button:hover {
+  background: var(--bg-hover);
+  color: var(--fg-base);
+}

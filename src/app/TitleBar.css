@@ -1,0 +1,134 @@
+.titlebar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: var(--titlebar-height);
+  background: var(--bg-titlebar);
+  border-bottom: var(--space-px) solid var(--border);
+  color: var(--fg-muted);
+  font-size: var(--text-sm);
+  position: relative;
+  z-index: var(--z-titlebar);
+  transition:
+    background-color var(--dur-base) var(--ease-standard),
+    opacity var(--dur-base) var(--ease-standard);
+}
+
+.titlebar__traffic {
+  flex: 0 0 var(--traffic-light-inset);
+  height: 100%;
+}
+
+.titlebar__left,
+.titlebar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-0-5);
+  padding: 0 var(--space-2);
+  flex: 0 0 auto;
+  min-width: var(--titlebar-side-min);
+}
+
+.titlebar__right {
+  justify-content: flex-end;
+}
+
+.titlebar[data-os='macos'] .titlebar__left {
+  padding-left: 0;
+}
+
+.titlebar__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-1-5);
+  white-space: nowrap;
+  overflow: hidden;
+  height: 100%;
+}
+
+.titlebar__folder {
+  color: var(--fg-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titlebar__sep {
+  color: var(--fg-subtle);
+  opacity: 0.6;
+}
+
+.titlebar__file {
+  color: var(--fg-base);
+  font-weight: var(--weight-medium);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titlebar__dirty {
+  width: var(--space-1-5);
+  height: var(--space-1-5);
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  flex: 0 0 auto;
+  transform: scale(0);
+  transition: transform var(--dur-fast) var(--ease-emphasized);
+}
+
+.titlebar__dirty[data-visible='true'] {
+  transform: scale(1);
+}
+
+.titlebar__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height);
+  height: var(--control-height);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--fg-subtle);
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+
+.titlebar__icon:hover {
+  background: var(--bg-hover);
+  color: var(--fg-base);
+}
+
+.titlebar__icon[data-active='true'] {
+  color: var(--accent);
+}
+
+.titlebar__controls {
+  display: flex;
+  height: 100%;
+  flex: 0 0 auto;
+}
+
+.titlebar__control {
+  width: var(--titlebar-control-width);
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--fg-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+
+.titlebar__control:hover {
+  background: var(--bg-hover);
+  color: var(--fg-base);
+}
+
+.titlebar__control--close:hover {
+  background: #c42b1c;
+  color: #fff;
+}
