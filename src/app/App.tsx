@@ -44,7 +44,7 @@ import { ReadingStylePicker, ThemePicker } from '../themes/Pickers';
 import { readingStyleName } from '../themes/readingStyles';
 import { useTheme } from '../themes/store';
 import { Shell } from './Shell';
-import { toast, toastError } from './toasts';
+import { toast, toastError } from './toastStore';
 import { useWorkspace } from './workspace';
 
 /**

@@ -4,12 +4,12 @@ import type { Command, CommandContext } from '../commands/registry';
 import { getPlatform } from '../platform';
 import { basename } from '../platform/path';
 import { getSettings, useSettings } from '../settings/store';
-import { ask } from '../ui/dialog';
+import { ask } from '../ui/dialogStore';
 import { addBeforeSwitchGuard, currentFormat } from './actions';
 import { DELETED_ON_DISK, isDirty, useDocument } from './document';
 import { saveDocument } from './save';
 import { detectFormat, toBuffer } from './textfile';
-import { toastError } from './toasts';
+import { toastError } from './toastStore';
 
 /** Save / Discard / Cancel. Resolves true when it's OK to continue. */
 export async function confirmLeave(action = 'continue'): Promise<boolean> {

@@ -3,7 +3,7 @@ import { basename } from '../platform/path';
 import { currentFormat, noteOwnWrite } from './actions';
 import { useDocument } from './document';
 import { toDisk } from './textfile';
-import { toastError } from './toasts';
+import { toastError } from './toastStore';
 
 /** Saves the buffer with the file's original line endings. Atomic on disk. */
 export async function saveDocument(): Promise<boolean> {

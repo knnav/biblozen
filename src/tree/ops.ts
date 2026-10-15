@@ -8,11 +8,11 @@ import {
   selectedOrActiveDir,
 } from '../app/actions';
 import { useDocument } from '../app/document';
-import { toast, toastError } from '../app/toasts';
+import { toast, toastError } from '../app/toastStore';
 import { useWorkspace } from '../app/workspace';
 import { getPlatform } from '../platform';
 import { basename, dirname, isInside, join, relative, samePath } from '../platform/path';
-import { confirm } from '../ui/dialog';
+import { confirm } from '../ui/dialogStore';
 import { findNode, validateName, withMarkdownExt } from './model';
 import { useTree } from './store';
 

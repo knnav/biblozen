@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState, type MouseEvent 
 import { openFile, openPath } from '../app/actions';
 import { useDocument } from '../app/document';
 import { saveDocument } from '../app/save';
-import { toast, toastError } from '../app/toasts';
+import { toast, toastError } from '../app/toastStore';
 import { useWorkspace } from '../app/workspace';
 import { resolveWikilinkRef, useIndex } from '../index/store';
 import { getPlatform } from '../platform';

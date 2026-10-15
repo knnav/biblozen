@@ -12,7 +12,7 @@ import { allFiles, findNode, sortNodes } from '../tree/model';
 import { resetTree, useTree } from '../tree/store';
 import { useDocument } from './document';
 import { detectFormat, toBuffer, type TextFormat } from './textfile';
-import { toast, toastError } from './toasts';
+import { toast, toastError } from './toastStore';
 import { useWorkspace } from './workspace';
 
 let unwatchRoot: (() => void) | null = null;

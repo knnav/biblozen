@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react';
 import { useMemo, useRef, useState } from 'react';
-import { toast } from '../app/toasts';
+import { toast } from '../app/toastStore';
 import { Highlight, Picker } from '../commands/Picker';
 import { useSettings } from '../settings/store';
 import { activeThemeId, allThemes, chooseTheme, previewTheme, useThemes } from './engine';

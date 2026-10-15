@@ -1,6 +1,6 @@
 import { closeFolder, openFolder, openPath, revealInTree } from '../app/actions';
 import { useDocument } from '../app/document';
-import { toast } from '../app/toasts';
+import { toast } from '../app/toastStore';
 import { useWorkspace } from '../app/workspace';
 import type { Command, CommandContext } from '../commands/registry';
 import { getPlatform } from '../platform';

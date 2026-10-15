@@ -1,4 +1,4 @@
-import { toast, toastError } from '../app/toasts';
+import { toast, toastError } from '../app/toastStore';
 import type { Command, CommandContext } from '../commands/registry';
 import { getPlatform } from '../platform';
 import { useDocument } from '../app/document';

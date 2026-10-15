@@ -1,5 +1,5 @@
 import { AlertTriangle, CheckCircle2, Info, X, XCircle } from 'lucide-react';
-import { useToasts, type ToastKind } from './toasts';
+import { useToasts, type ToastKind } from './toastStore';
 import './Toasts.css';
 
 const ICONS: Record<ToastKind, typeof Info> = {

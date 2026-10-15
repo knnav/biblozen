@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef } from 'react';
-import { useDialog } from './dialog';
+import { useDialog } from './dialogStore';
 import './Dialog.css';
 
 export function DialogHost() {

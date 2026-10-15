@@ -1,6 +1,6 @@
 import { FolderOpen, Search, X } from 'lucide-react';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { toastError } from '../app/toasts';
+import { toastError } from '../app/toastStore';
 import { getPlatform } from '../platform';
 import { join } from '../platform/path';
 import { BUILTIN, useThemes } from '../themes/engine';

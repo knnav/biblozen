@@ -3,7 +3,7 @@
 
 import type { EditorView } from '@codemirror/view';
 import { useDocument } from '../app/document';
-import { toastError } from '../app/toasts';
+import { toastError } from '../app/toastStore';
 import { getPlatform } from '../platform';
 import { extname } from '../platform/path';
 import { getSettings } from '../settings/store';
